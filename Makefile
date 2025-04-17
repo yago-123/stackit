@@ -1,6 +1,6 @@
 
 .PHONY: all
-all: lint imports fmt run
+all: lint imports fmt
 
 .PHONY: lint
 lint:
@@ -20,7 +20,12 @@ test:
 	@echo "Running tests..."
 	@go test -v -cover ./...
 
-.PHONY: run
-run:
+.PHONY: run-redis
+run-redis:
 	@echo "Running the application..."
-	@go run cmd/server/main.go
+	@go run cmd/redis/main.go
+
+.PHONY: run-memory
+run-memory:
+	@echo "Running the application..."
+	@go run cmd/memory/main.go

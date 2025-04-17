@@ -13,6 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// todo(): these should be provided via config.Config package or env vars
 const (
 	ServerReadTimeout  = 5 * time.Second
 	ServerWriteTimeout = 5 * time.Second
@@ -48,7 +49,7 @@ func (s *ServerAPI) Start() error {
 	err := s.server.ListenAndServe()
 	if errors.Is(err, http.ErrServerClosed) {
 		// todo(): use s.cfg.Logger instead
-		log.Printf("HTTP API server stopped successfully")
+		log.Printf("HTTP API memory stopped successfully")
 		return nil
 	}
 
